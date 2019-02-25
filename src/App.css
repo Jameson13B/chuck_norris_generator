@@ -1,13 +1,14 @@
 .App {
+  background: #feb71d;
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: white;
+  min-height: 100vh;
+}
+
+.App .img {
+  position: fixed;
+  bottom: 0;
+  max-height: 75%;
 }
