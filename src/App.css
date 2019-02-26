@@ -32,8 +32,8 @@
   border-radius: 50%;
   cursor: pointer;
   position: fixed;
-  bottom: 15px;
-  left: 15px;
+  bottom: 50px;
+  left: 50px;
   width: 90px;
   height: 90px;
   display: flex;
@@ -47,11 +47,25 @@
   border-radius: 50%;
   cursor: pointer;
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 50px;
+  right: 50px;
   width: 90px;
   height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .App .img {
+    max-height: 50%;
+  }
+  .App .new-btn {
+    bottom: 15px;
+    left: 15px;
+  }
+  .App .customize-btn {
+    bottom: 15px;
+    right: 15px;
+  }
 }

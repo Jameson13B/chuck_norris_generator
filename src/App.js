@@ -10,7 +10,8 @@ class App extends Component {
       joke: "",
       custFirst: "",
       custLast: "",
-      filter: []
+      filter: [],
+      settings: false
     };
   }
 
@@ -64,6 +65,8 @@ class App extends Component {
           New
         </div>
         <div className="customize-btn">Customize</div>
+        {/* Next line will be used to display modal for customizing */}
+        {/* {this.state.settings ? <CustModal /> : null} */}
       </div>
     );
   }
