@@ -1,33 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
+import "./CustModal.css";
 
-const CustModal = props => {
-  return (
-    <div id="CustModal" className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={props.handleAlgClose}>
-          &times;
-        </span>
-        <h1 className="title">Chuck Norris Generator</h1>
-        <p>
-          This is a Chuck Norris joke/saying generator. Chuck Norris can slam a
-          revolving door. Chuck Norris doesn't get laid. He lays people on the
-          ground. Someone once videotaped Chuck Norris getting pissed off. It
-          was called Walker: Texas Chain Saw Massacre Chuck Norris originally
-          appeared in the "Street Fighter II" video game, but was removed by
-          Beta Testers because every button caused him to do a roundhouse kick.
-          When asked bout this "glitch," Norris replied, "That's no glitch.",
-          Chuck Norris is my Homeboy.
-        </p>
-        <a
-          href="https://chucknorris.jamesonb.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Chuck Norris Generator
-        </a>
+class CustModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      custFirst: this.props.custFirst || "",
+      custLast: this.props.custLast || ""
+    };
+  }
+  handleInputChange = e => {
+    e.preventDefault();
+    e.persist();
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  render() {
+    return (
+      <div id="CustModal" className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={this.props.handleModalClose}>
+            &times;
+          </span>
+          <h1 className="title">Chuck Norris Generator</h1>
+          <p>
+            This is a Chuck Norris joke/saying generator. You can customize the
+            name in the sayings using the form below. There is also a couple
+            template characters you can choose from. Save empty first and last
+            name to restore default. Chuck Norris can slam a revolving door.
+          </p>
+          <form className="form" onSubmit={this.props.handleSaveCust}>
+            <input
+              name="custFirst"
+              placeholder="First Name"
+              value={this.state.custFirst}
+              onChange={this.handleInputChange}
+            />
+            <input
+              name="custLast"
+              placeholder="Last Name"
+              value={this.state.custLast}
+              onChange={this.handleInputChange}
+            />
+            <input type="submit" value="Save" className="button" />
+          </form>
+          <div className="characters">
+            <div style={{ fontWeight: "bold" }}>Characters:</div>
+            <div
+              className="charBtn"
+              onClick={() => this.props.handleTempCust("Kanye", "West")}
+            >
+              Kanye West
+            </div>
+            <div
+              className="charBtn"
+              onClick={() => this.props.handleTempCust("Elon", "Musk")}
+            >
+              Elon Musk
+            </div>
+            <div
+              className="charBtn"
+              onClick={() => this.props.handleTempCust("Genghis", "Khan")}
+            >
+              Genghis Khan
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default CustModal;

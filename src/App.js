@@ -12,7 +12,6 @@ class App extends Component {
       joke: "",
       custFirst: "",
       custLast: "",
-      filter: [],
       settings: false
     };
   }
@@ -24,6 +23,10 @@ class App extends Component {
         this.state.custFirst
       }&lastName=${this.state.custLast}`;
     }
+    this.handleAxios(url);
+  }
+
+  handleAxios = url => {
     axios
       .get(url)
       .then(res => {
@@ -34,7 +37,7 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
+  };
 
   handleNew = () => {
     let url = "https://api.icndb.com/jokes/random/";
@@ -43,16 +46,25 @@ class App extends Component {
         this.state.custFirst
       }&lastName=${this.state.custLast}`;
     }
-    axios
-      .get(url)
-      .then(res => {
-        this.setState({
-          joke: res.data.value.joke.replace(/&quot;/g, '"')
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.handleAxios(url);
+  };
+
+  handleSaveCust = e => {
+    e.preventDefault();
+    this.setState({
+      custFirst: e.target.childNodes[0].value || "",
+      custLast: e.target.childNodes[1].value || "",
+      settings: false
+    });
+    setTimeout(this.handleNew, 500);
+  };
+  handleTempCust = (custFirst, custLast) => {
+    this.setState({
+      custFirst: custFirst,
+      custLast: custLast,
+      settings: false
+    });
+    setTimeout(this.handleNew, 500);
   };
 
   render() {
@@ -75,7 +87,15 @@ class App extends Component {
           Customize
         </div>
         {/* Next line will be used to display modal for customizing */}
-        {this.state.settings ? <CustModal /> : null}
+        {this.state.settings ? (
+          <CustModal
+            handleModalClose={() => this.setState({ settings: false })}
+            handleSaveCust={this.handleSaveCust}
+            handleTempCust={this.handleTempCust}
+            custFirst={this.state.custFirst}
+            custLast={this.state.custLast}
+          />
+        ) : null}
         <Signature />
       </div>
     );
@@ -83,8 +103,3 @@ class App extends Component {
 }
 
 export default App;
-
-// Todo:
-// Customize Name
-// Filter Catergories
-// Add signature
