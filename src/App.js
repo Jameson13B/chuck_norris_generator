@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let url = "http://api.icndb.com/jokes/random/";
+    let url = "https://api.icndb.com/jokes/random/";
     if (this.state.custFirst !== "") {
       url = `http://api.icndb.com/jokes/random/?firstName=${
         this.state.custFirst
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   handleNew = () => {
-    let url = "http://api.icndb.com/jokes/random/";
+    let url = "https://api.icndb.com/jokes/random/";
     if (this.state.custFirst !== "") {
       url = `http://api.icndb.com/jokes/random/?firstName=${
         this.state.custFirst
