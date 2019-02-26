@@ -16,6 +16,11 @@ class App extends Component {
 
   componentDidMount() {
     let url = "http://api.icndb.com/jokes/random/";
+    if (this.state.custFirst !== "") {
+      url = `http://api.icndb.com/jokes/random/?firstName=${
+        this.state.custFirst
+      }&lastName=${this.state.custLast}`;
+    }
     axios
       .get(url)
       .then(res => {
@@ -30,6 +35,11 @@ class App extends Component {
 
   handleNew = () => {
     let url = "http://api.icndb.com/jokes/random/";
+    if (this.state.custFirst !== "") {
+      url = `http://api.icndb.com/jokes/random/?firstName=${
+        this.state.custFirst
+      }&lastName=${this.state.custLast}`;
+    }
     axios
       .get(url)
       .then(res => {
