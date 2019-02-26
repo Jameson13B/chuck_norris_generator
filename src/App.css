@@ -5,10 +5,53 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  padding: 0 15px;
+}
+
+.App .title {
+  height: 10%;
+}
+
+.App .joke {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  max-width: 600px;
 }
 
 .App .img {
   position: fixed;
   bottom: 0;
-  max-height: 75%;
+  max-height: 65%;
+}
+
+.App .new-btn {
+  background: black;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App .customize-btn {
+  background: black;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
