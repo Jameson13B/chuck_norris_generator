@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Signature from "./Signature";
+import CustModal from "./CustModal";
 import chuck_norris from "./img/chuck_norris.jpg";
 import axios from "axios";
 import "./App.css";
@@ -65,9 +66,16 @@ class App extends Component {
         <div className="new-btn" onClick={this.handleNew}>
           New
         </div>
-        <div className="customize-btn">Customize</div>
+        <div
+          className="customize-btn"
+          onClick={() => {
+            this.setState({ settings: true });
+          }}
+        >
+          Customize
+        </div>
         {/* Next line will be used to display modal for customizing */}
-        {/* {this.state.settings ? <CustModal /> : null} */}
+        {this.state.settings ? <CustModal /> : null}
         <Signature />
       </div>
     );
