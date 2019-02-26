@@ -72,3 +72,13 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .modal .characters {
+    display: flex;
+    flex-direction: column;
+  }
+  .modal .charBtn {
+    margin-top: 10px;
+  }
+}
