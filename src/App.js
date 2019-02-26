@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     let url = "https://api.icndb.com/jokes/random/";
     if (this.state.custFirst !== "") {
-      url = `http://api.icndb.com/jokes/random/?firstName=${
+      url = `https://api.icndb.com/jokes/random/?firstName=${
         this.state.custFirst
       }&lastName=${this.state.custLast}`;
     }
@@ -42,7 +42,7 @@ class App extends Component {
   handleNew = () => {
     let url = "https://api.icndb.com/jokes/random/";
     if (this.state.custFirst !== "") {
-      url = `http://api.icndb.com/jokes/random/?firstName=${
+      url = `https://api.icndb.com/jokes/random/?firstName=${
         this.state.custFirst
       }&lastName=${this.state.custLast}`;
     }
