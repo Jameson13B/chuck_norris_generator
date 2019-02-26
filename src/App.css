@@ -56,6 +56,12 @@
   justify-content: center;
 }
 
+.App .sig {
+  position: fixed;
+  bottom: 15px;
+  font-size: 0.75rem;
+}
+
 @media (max-width: 600px) {
   .App .img {
     max-height: 50%;
@@ -67,5 +73,8 @@
   .App .customize-btn {
     bottom: 15px;
     right: 15px;
+  }
+  .App .sig {
+    bottom: 5px;
   }
 }

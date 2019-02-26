@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Signature from "./Signature";
 import chuck_norris from "./img/chuck_norris.jpg";
 import axios from "axios";
 import "./App.css";
@@ -67,6 +68,7 @@ class App extends Component {
         <div className="customize-btn">Customize</div>
         {/* Next line will be used to display modal for customizing */}
         {/* {this.state.settings ? <CustModal /> : null} */}
+        <Signature />
       </div>
     );
   }
