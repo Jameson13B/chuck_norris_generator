@@ -72,10 +72,14 @@ class App extends Component {
       <div className="App">
         <h1 className="title">Welcome to Chuck Norris Saying Generator!</h1>
         <div className="joke">
-          {this.state.joke ? <div>{this.state.joke}</div> : <h2>Loading...</h2>}
+          {this.state.joke ? (
+            <div data-testid="joke-content">{this.state.joke}</div>
+          ) : (
+            <h2>Loading...</h2>
+          )}
         </div>
         <img src={chuck_norris} alt="chuck-norris-cartoon" className="img" />
-        <div className="new-btn" onClick={this.handleNew}>
+        <div className="new-btn" onClick={this.handleNew} data-testid="new-btn">
           New
         </div>
         <div
