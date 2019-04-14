@@ -8,51 +8,49 @@ import {
   waitForElement
 } from "react-testing-library";
 import App from "./App";
+import { debug } from "util";
 
 afterEach(cleanup);
 
 // App
-test("renders joke when App mounts", async () => {
-  const { getByTestId } = render(<App />);
-  const joke = await waitForElement(() => getByTestId("joke-content"));
-  expect(joke).toBeTruthy();
+describe("App Tests", () => {
+  test("renders joke when App mounts", async () => {
+    const { getByTestId } = render(<App />);
+    // Create variables
+    const joke = await waitForElement(() => getByTestId("joke-content"));
+    // Run and check test
+    expect(joke).toBeTruthy();
+  });
 });
 // Elements
-test("renders correct name/placeholder combo for first", () => {
-  const { getByPlaceholderText } = render(
-    <input name="custFirst" placeholder="First Name" />
-  );
-  const input = getByPlaceholderText("First Name");
-  expect(input).toHaveAttribute("name", "custFirst");
+describe("Element Tests", () => {
+  test("renders correct name/placeholder combo for first", () => {
+    const { getByPlaceholderText } = render(
+      <input name="custFirst" placeholder="First Name" />
+    );
+    // Create variables
+    const input = getByPlaceholderText("First Name");
+    // Run and check test
+    expect(input).toHaveAttribute("name", "custFirst");
+  });
+
+  test("renders correct name/placeholder combo for last", () => {
+    const { getByPlaceholderText } = render(
+      <input name="custLast" placeholder="Last Name" />
+    );
+    // Create variables
+    const input = getByPlaceholderText("Last Name");
+    // Run and check test
+    expect(input).toHaveAttribute("name", "custLast");
+  });
+
+  test("renders customize modal when customize btn is clicked", async () => {
+    const { getByTestId } = render(<App state={{ settings: false }} />);
+    // Create variables
+    const button = getByTestId("custom-btn");
+    // Run and check test
+    fireEvent.click(button);
+    const modal = getByTestId("custom-modal");
+    await expect(modal).toBeTruthy();
+  });
 });
-
-test("renders correct name/placeholder combo for last", () => {
-  const { getByPlaceholderText } = render(
-    <input name="custLast" placeholder="Last Name" />
-  );
-  const input = getByPlaceholderText("Last Name");
-  expect(input).toHaveAttribute("name", "custLast");
-});
-
-// test("renders new joke when new btn is clicked", async () => {
-//   const { getByText, getByTestId, debug } = render(<App />);
-//   const joke1 = await waitForElement(() => getByTestId("joke-content"));
-//   const button = getByTestId("new-btn");
-//   expect(button).toHaveAttribute("className", "new-btn");
-//   // debug();
-//   // // expect(button).toHaveTextContent("New");
-//   // fireEvent.click(button);
-//   // // debug();
-//   // const joke2 = await waitForElement(() => getByTestId("joke-content"));
-//   // expect(joke2.innerHTML).not.toBe(joke1.innerHTML);
-// });
-
-const handleNew = () => {
-  let url = "https://api.icndb.com/jokes/random/";
-  if (this.state.custFirst !== "") {
-    url = `https://api.icndb.com/jokes/random/?firstName=${
-      this.state.custFirst
-    }&lastName=${this.state.custLast}`;
-  }
-  this.handleAxios(url);
-};

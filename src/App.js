@@ -87,6 +87,7 @@ class App extends Component {
           onClick={() => {
             this.setState({ settings: true });
           }}
+          data-testid="custom-btn"
         >
           Customize
         </div>

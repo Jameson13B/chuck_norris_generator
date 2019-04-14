@@ -16,7 +16,7 @@ class CustModal extends Component {
   };
   render() {
     return (
-      <div id="CustModal" className="modal">
+      <div id="CustModal" className="modal" data-testid="custom-modal">
         <div className="modal-content">
           <span className="close" onClick={this.props.handleModalClose}>
             &times;
